@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                              Selamat Datang di Sistem Aplikasi BUJT  
+                              Selamat Datang Administrator 
                             </h2>
                             <br>
                             

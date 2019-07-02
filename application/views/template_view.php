@@ -6,8 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title><?php echo $judul; ?></title>
     <!-- Favicon-->
-    <link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.png" type="image/x-icon">
-
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -163,45 +162,30 @@
                         </a>
                         <ul class="ml-menu">
                     <li>
-                        <a href="<?php echo base_url('jenis_layanan'); ?>">
+                        <a href="<?php echo base_url('barang'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Jenis Pelayanan</span>
+                            <span>Barang</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('komp_biaya'); ?>">
+                        <a href="<?php echo base_url('kategori'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Komponen Biaya</span>
+                            <span>Kategori Barang</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('satuan'); ?>">
+                        <a href="<?php echo base_url('customer'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Satuan</span>
-                        </a>
-                    </li> 
-                      
-                    <li>
-                        <a href="<?php echo base_url('penawaran'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Penawaran</span>
-                        </a>
-                    </li>
-                    
-                   
-                    <li>
-                        <a href="<?php echo base_url('country'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Country</span>
+                            <span>Customer</span>
                         </a>
                     </li> 
                     <li>
-                        <a href="<?php echo base_url('pricelist'); ?>">
+                        <a href="<?php echo base_url('pegawai'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Pricelist</span>
+                            <span>Pegawai</span>
                         </a>
-                    </li>
-                   
+                    </li> 
+                  
                     <li>
                         <a href="<?php echo base_url('user'); ?>">
                            <i class="material-icons">dns</i>
@@ -223,73 +207,10 @@
                     <li>
                         <a href="<?php echo base_url('gardu'); ?>">
                            <i class="material-icons">dns</i>
-                            <span>Gardu</span>
+                            <span>Invoice</span>
                         </a>
                     </li> 
-                     <li>
-                        <a href="<?php echo base_url('upload_harga'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Upload Harga</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="javascript::void(0);" class="menu-toggle">
-                           <i class="material-icons">dns</i>
-                            <span>Harga</span>
-                        </a>
-                         <ul class="ml-menu">
-                            <li>
-                                <a href="<?php echo base_url('harga'); ?>">
-                                       <i class="material-icons">dns</i>
-                                        <span>Master Harga</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url('set_harga'); ?>">
-                                   <i class="material-icons">dns</i>
-                                    <span>Set Harga</span>
-                                </a>
-                            </li> 
-                        </ul>
-                    </li> 
-               
-                      <li>
-                        <a href="<?php echo base_url('setup_penawaran'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Setup Harga Penawaran</span>
-                        </a>
-                    </li> 
-                    <li>
-                        <a href="<?php echo base_url('asumsi'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Asumsi</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('asumsi_list'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Asumsi List</span>
-                        </a>
-                    </li>
-                   
-                    <li>
-                        <a href="<?php echo base_url('jlo_sdm_cat'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>JMTO SDM Wide Cat</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('jlo_sdm_list'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>JMTO SDM Wide List</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('jlo_sdm_val'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>JMTO SDM Wide Value</span>
-                        </a>
-                    </li>
+                    
                     
                 
                     
@@ -307,7 +228,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2018 <a href="javascript:void(0);"> PT.Jasamarga (Persero) </a>
+                    &copy; 2019 <a href="javascript:void(0);"> Istana Accessories </a>
                 </div>
             </div>
             <!-- #Footer -->
