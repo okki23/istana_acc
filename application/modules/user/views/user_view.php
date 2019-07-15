@@ -23,8 +23,9 @@
   
                                     <thead>
                                         <tr>
-                                            <th style="width:5%;">No</th>
+                                           
                                             <th style="width:5%;">Username</th>  
+                                            <th style="width:5%;">Nama Pegawai</th>  
                                             <th style="width:10%;">Opsi</th> 
                                         </tr>
                                     </thead> 
@@ -57,6 +58,16 @@
                                             <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
                                         </div>
                                     </div>
+                                    <div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" readonly="readonly" >
+                                                    <input type="hidden" name="id_pegawai" id="id_pegawai" readonly="readonly">
+                                                    
+                                                </div>
+                                                <span class="input-group-addon">
+                                                    <button type="button" onclick="Caripegawai();" class="btn btn-primary"> Pilih pegawai... </button>
+                                                </span>
+                                    </div>           
                                     <div class="form-group">
                                         <div class="form-line">
                                             <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
@@ -74,11 +85,62 @@
                     </div>
                 </div>
     </div>
+
+    
+
+    <!-- modal cari pegawai -->
+    <div class="modal fade" id="CaripegawaiModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" >Cari Jabatan</h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+
+                                <br>
+                                <hr>
+
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_pegawai" >
+  
+                                    <thead>
+                                        <tr>  
+                                            <th style="width:98%;">NIP </th> 
+                                            <th style="width:98%;">Nama </th> 
+                                         </tr>
+                                          
+                                    </thead> 
+                                    <tbody id="daftar_pegawai">
+
+                                </tbody>
+                                </table> 
+                       </div>
+                     
+                    </div>
+                </div>
+    </div>
+
  
  
    <script type="text/javascript">
     
- 
+    function Caripegawai(){
+        $("#CaripegawaiModal").modal({backdrop: 'static', keyboard: false,show:true});
+    } 
+    $('#daftar_pegawai').DataTable( {
+            "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
+    });
+
+    var daftar_pegawai = $('#daftar_pegawai').DataTable();
+     
+     $('#daftar_pegawai tbody').on('click', 'tr', function () {
+         
+         var content = daftar_pegawai.row(this).data()
+         console.log(content);
+         $("#nama_pegawai").val(content[1]);
+         $("#id_pegawai").val(content[5]);
+         $("#CaripegawaiModal").modal('hide');
+     } );
        
      function Ubah_Data(id){
         $("#defaultModalLabel").html("Form Ubah Data");
@@ -92,8 +154,8 @@
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id);
                  $("#username").val(result.username); 
-                 $("#id_admin_pppu").val(result.id_admin_pppu);
-                 $("#nama_adminpppu").val(result.nama); 
+                 $("#id_pegawai").val(result.id_pegawai);
+                 $("#nama_pegawai").val(result.nama_pegawai); 
              }
          });
      }
@@ -156,7 +218,7 @@
           
          //validasi form sebelum submit ke controller
          var username = $("#username").val();
- 
+        
         
           
          if(username == ''){

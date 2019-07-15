@@ -24,7 +24,30 @@ class Customer extends Parent_Controller {
 		$this->load->view('template_view',$data);		
    
 	}
- 
+	
+	public function bannedcust(){
+		$id = $this->input->post('id'); 
+		$sql = $this->db->set('status','2')->where('id',$id)->update($this->nama_tabel);
+		if($sql){
+			$result = array("response"=>array('message'=>'success'));
+		}else{
+			$result = array("response"=>array('message'=>'failed'));
+		}
+		
+		echo json_encode($result,TRUE);
+	}
+
+	public function unbannedcust(){
+		$id = $this->input->post('id'); 
+		$sql = $this->db->set('status','1')->where('id',$id)->update($this->nama_tabel);
+		if($sql){
+			$result = array("response"=>array('message'=>'success'));
+		}else{
+			$result = array("response"=>array('message'=>'failed'));
+		}
+		
+		echo json_encode($result,TRUE);
+	}
   	public function fetch_customer(){  
        $getdata = $this->m_customer->fetch_customer();
        echo json_encode($getdata);   

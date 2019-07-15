@@ -20,8 +20,11 @@
 							   <table class="table table-bordered table-striped table-hover js-basic-example" id="example" >
   
 									<thead>
-										<tr> 
-											<th style="width:5%;">customer</th> 
+										<tr>  
+											<th style="width:5%;">Full Name</th> 
+                                            <th style="width:5%;">Email</th> 
+                                            <th style="width:5%;">Telp</th> 
+                                            <th style="width:5%;">Alamat</th> 
 											<th style="width:5%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -37,40 +40,34 @@
         </div>
     </section>
 
-   
-	<!-- form tambah dan ubah data -->
-	<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="defaultModalLabel">Form Tambah Data</h4>
-                        </div>
-                        <div class="modal-body">
-                              <form method="post" id="user_form" enctype="multipart/form-data">   
-                                 
-                                    <input type="hidden" name="id" id="id"> 
-                                    <!-- hidden -->
-									 
-									<div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="nama_customer" id="nama_customer" class="form-control" placeholder="Nama customer" />
-                                        </div>
-                                    </div>
- 
-
-								   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
-
-                                   <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
-							 </form>
-					   </div>
-                     
-                    </div>
-                </div>
-    </div>
-
- 
+    
    <script type="text/javascript">
  
+    function Banned(id){
+        $.ajax({
+			 url:"<?php echo base_url(); ?>customer/bannedcust/"+id,
+			 type:"POST",
+             data:{id:id},
+			 dataType:"JSON", 
+			 success:function(result){  
+                console.log(result);                  
+                location.reload(true); 
+			 }
+		 });
+    }
+
+    function UnBanned(id){
+        $.ajax({
+			 url:"<?php echo base_url(); ?>customer/unbannedcust/"+id,
+			 type:"POST",
+             data:{id:id},
+			 dataType:"JSON", 
+			 success:function(result){  
+                console.log(result);                  
+                location.reload(true); 
+			 }
+		 });
+    }
        
 	 function Ubah_Data(id){
 		$("#defaultModalLabel").html("Form Ubah Data");
