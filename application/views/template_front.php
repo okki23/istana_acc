@@ -37,8 +37,8 @@
                     </div>
                     <div class="book-login-register">
                         <ul>
-                            <li><a href="login.html"><i class="ti-user"></i>login</a></li>
-                            <li><a href="register.html"><i class="ti-settings"></i>register</a></li>
+                            <li><a href="<?php echo base_url('login_cust'); ?>"><i class="ti-user"></i>login</a></li>
+                            <li><a href="<?php echo base_url('register'); ?>"><i class="ti-settings"></i>register</a></li>
                              
                         </ul>
                     </div>

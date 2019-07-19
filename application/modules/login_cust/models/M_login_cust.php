@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class M_front extends Parent_Model { 
+class M_login_cust extends Parent_Model { 
   
   
   var $nama_tabel = 'm_struktur';

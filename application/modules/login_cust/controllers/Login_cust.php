@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
   
-class Front extends Parent_Controller {
+class Login_cust extends Parent_Controller {
  
 
  	public function __construct(){
  		parent::__construct();
- 		$this->load->model('m_front');
+ 		$this->load->model('m_login_cust');
  	}
  
 
@@ -14,9 +14,9 @@ class Front extends Parent_Controller {
 		 
  	 
 		$data['judul'] = $this->data['judul']; 
-		$data['konten'] = 'front/front_view';
+		$data['konten'] = 'login_cust/login_cust_view';
 		$data['cat'] = $this->db->get('m_kategori')->result();
-		$data['item'] = $this->m_front->fetch_item();
+		$data['item'] = $this->m_login_cust->fetch_item();
 		$this->load->view('template_front',$data);
 	}
 }
