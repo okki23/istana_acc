@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 02/07/2019 20:44:11
+ Date: 01/08/2019 11:07:53
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,14 @@ CREATE TABLE `m_barang`  (
   `stock` int(255) NULL DEFAULT NULL,
   `keterangan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of m_barang
+-- ----------------------------
+INSERT INTO `m_barang` VALUES (1, 1, 'Cincin Lux 24K', 1000000, 2, 'cincina.jpg', 10, 'OK');
+INSERT INTO `m_barang` VALUES (2, 2, 'Kalung Lux For ', 2000000, 5, 'kalung.jpg', 10, 'OK');
+INSERT INTO `m_barang` VALUES (3, 3, 'Gelang Luxurious', 2400000, 6, 'gelang.jpeg', 10, 'OK');
 
 -- ----------------------------
 -- Table structure for m_customer
@@ -39,14 +46,18 @@ CREATE TABLE `m_barang`  (
 DROP TABLE IF EXISTS `m_customer`;
 CREATE TABLE `m_customer`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `full_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `telp` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `alamat` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of m_customer
+-- ----------------------------
+INSERT INTO `m_customer` VALUES (1, 'YQ==', 'okkisetyawan@gmail.com', 'Okki Setyawan', '02184785', 'Jl.A');
 
 -- ----------------------------
 -- Table structure for m_kategori
@@ -56,7 +67,14 @@ CREATE TABLE `m_kategori`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of m_kategori
+-- ----------------------------
+INSERT INTO `m_kategori` VALUES (1, 'Cincin');
+INSERT INTO `m_kategori` VALUES (2, 'Kalung');
+INSERT INTO `m_kategori` VALUES (3, 'Gelang');
 
 -- ----------------------------
 -- Table structure for m_pegawai

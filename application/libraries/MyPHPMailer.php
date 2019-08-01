@@ -1,12 +1,20 @@
 <?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class MyPHPMailer {
+ 
+class MyPHPMailer
 
-    public function __construct(){
-        
+{
+    public function __construct()
+    {
+        log_message('Debug', 'PHPMailer class is loaded.');
     }
-    public function MyPHPMailer() {
-        require_once('PHPMailer/PHPMailerAutoload.php');
+
+    public function load()
+    {
+        require_once(APPPATH.'third_party/phpmailer/src/PHPMailer.php');
+        require_once(APPPATH.'third_party/phpmailer/src/SMTP.php');
+       
+        $objMail = new PHPMailer\PHPMailer\PHPMailer();
+        return $objMail;
     }
 }
 ?>
