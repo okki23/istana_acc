@@ -11,7 +11,7 @@
  Target Server Version : 100316
  File Encoding         : 65001
 
- Date: 01/08/2019 11:07:53
+ Date: 30/08/2019 05:31:26
 */
 
 SET NAMES utf8mb4;
@@ -51,13 +51,16 @@ CREATE TABLE `m_customer`  (
   `full_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `telp` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `alamat` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `status` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of m_customer
 -- ----------------------------
-INSERT INTO `m_customer` VALUES (1, 'YQ==', 'okkisetyawan@gmail.com', 'Okki Setyawan', '02184785', 'Jl.A');
+INSERT INTO `m_customer` VALUES (1, 'YQ==', 'okkisetyawan@gmail.com', 'Okki Setyawan', '02184785', 'Jl.A', 1);
+INSERT INTO `m_customer` VALUES (2, 'YQ==', 'lina@mail.com', 'Karlina', '0218738453', 'Jl.B', 1);
+INSERT INTO `m_customer` VALUES (3, 'YQ==', 'damayantiwidia30@gmail.com', 'Widia Damayanti', '081932026896', 'Jl.Bintara 12A Rt 009/009 No.15 Bekasi Barat', 1);
 
 -- ----------------------------
 -- Table structure for m_kategori
@@ -117,8 +120,16 @@ CREATE TABLE `t_invoice`  (
   `id_customer` int(10) NULL DEFAULT NULL,
   `bukti_bayar` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `no_resi` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `date_paid` date NULL DEFAULT NULL,
+  `is_checkout` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_invoice
+-- ----------------------------
+INSERT INTO `t_invoice` VALUES (1, '201908290000001', '2019-08-29', 1, 'you-tube@2x.jpg', NULL, '2', '2019-08-29', 2);
 
 -- ----------------------------
 -- Table structure for t_invoice_detail
@@ -126,10 +137,16 @@ CREATE TABLE `t_invoice`  (
 DROP TABLE IF EXISTS `t_invoice_detail`;
 CREATE TABLE `t_invoice_detail`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `id_invoice` int(10) NULL DEFAULT NULL,
+  `no_invoice` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `id_barang` int(10) NULL DEFAULT NULL,
   `qty` int(10) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_invoice_detail
+-- ----------------------------
+INSERT INTO `t_invoice_detail` VALUES (1, '201908290000001', 1, 1);
+INSERT INTO `t_invoice_detail` VALUES (2, '201908290000001', 3, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

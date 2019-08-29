@@ -78,9 +78,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
                             
                             <li class="checkout">
-                                <a href="#">
+                                <a href="<?php echo base_url('listcart'); ?>">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <span id="checkout_items" class="checkout_items">2</span>
+                                    <span id="checkout_items" class="checkout_items"> <?php echo $count_cart; ?></span>
                                 </a>
                             </li>
                             <?php

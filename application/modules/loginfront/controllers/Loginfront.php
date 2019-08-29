@@ -13,6 +13,7 @@ class loginfront extends Parent_Controller {
  	}
 	public function index(){
 		$data['judul'] = $this->data['judul']; 
+		$data['count_cart'] = 0;
 		$this->load->view('loginfront/loginfront_view',$data);
 	}
 	public function auth(){
@@ -27,15 +28,16 @@ class loginfront extends Parent_Controller {
 			 
 			if($auth->num_rows() > 0){
 				 
-				$this->session->set_userdata(array('email'=>$email,'full_name'=>$session->full_name,'telp'=>$session->telp,'alamat'=>$session->alamat));
+				$this->session->set_userdata(array('userid'=>$session->id,'email'=>$email,'full_name'=>$session->full_name,'telp'=>$session->telp,'alamat'=>$session->alamat));
 				//redirect(base_url('loginfront'));
 				echo "<script language=javascript>
 				alert('Login sukses!');
 				window.location='" . base_url('front') . "';
 				</script>";
+				
 			}else{
 				echo "<script language=javascript>
-				alert('Akun yang anda masukkan tidak tersedia, Periksa kembali!');
+				alert('Akun yang anda masukkan tidak tersedia,atau di Banned! Periksa kembali atau hubungi administrator!');
 				window.location='" . base_url('loginfront') . "';
 				</script>";
 			}

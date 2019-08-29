@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li><a href="<?php echo base_url('contact'); ?>">contact</a></li>
                             <?php 
                             if($this->session->userdata('email')){
-                                echo ' <li><a href="javascript:void(0);">Welcome Okki!</a></li>';
+                                echo ' <li><a href="javascript:void(0);">Welcome '.$this->session->userdata('full_name').'!</a></li>';
                             }else{
                                 echo ' <li><a href="'.base_url('loginfront').'">Login</a></li>';
                             }
@@ -77,9 +77,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
                             
                             <li class="checkout">
-                                <a href="#">
+                                <a href="<?php echo base_url('listcart'); ?>">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    <span id="checkout_items" class="checkout_items">2</span>
+                                    <span id="checkout_items" class="checkout_items"> <?php echo $count_cart; ?></span>
                                 </a>
                             </li>
                             <?php
@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div class="col text-center">
                 <div class="section_title new_arrivals_title">
-                    <h2> Our Products </h2>
+                    <h2> Etalase Toko </h2>
                 </div>
             </div>
         </div>
@@ -177,17 +177,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         echo '
                         <div class="product-item '.strtolower($v->nama_kategori).'">
                         <div class="product discount product_filter">
+
                             <div class="product_image">
                                 <img src="'.base_url('upload/'.$v->foto).'" style="width:220px; height:200px;" alt="">
                             </div>
                           
                             <div class="product_info">
-                                <h6 class="product_name"><a href="single.html"> '.$v->nama_barang.'</a></h6>
+                               
+                                <h6 class="product_name"><a href="javascript:void(0);"> '.$v->nama_barang.'</a></h6>
                                 <div class="product_price">IDR '.number_format($v->harga).' </div>
+                                <div class="product_price"> <a href="javascript:void(0);" onclick="Carting('.$v->id.');" ><i class="fa fa-shopping-cart" aria-hidden="true"></i>  Buy it! </div>
                             </div>
                         </div>
+                         
                         <div class="red_button add_to_cart_button"><a href="javascript:void(0);" onclick="ShowDetail('.$v->id.');">detail</a></div>
-                        <div class="red_button add_to_cart_button"><a href="javascript:void(0);">add to cart</a></div>
+                       
                     </div>';
                     }
                     ?>
@@ -204,13 +208,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
-                    <ul class="footer_nav">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
-                    </ul>
-                </div>
+               
             </div>
             <div class="col-lg-6">
                 <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
@@ -298,6 +296,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
+
+
+ <!-- modal detail -->
+ <div class="modal fade" id="CartModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" >Buy This Item!</h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+                                <br>
+                                <hr>
+                               
+                               <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                        <table class="table table-bordered table-hovered">
+                                <tr>
+                                    <td>Nama Barang</td>
+                                    <td>:</td>
+                                    <td><div id="nama_barangdtlx"> </div></td>
+                                </tr>
+                                <tr>
+                                    <td>Kategori</td>
+                                    <td>:</td>
+                                    <td><div id="nama_kategoridtlx"> </div></td>
+                                </tr>
+                                <tr>
+                                    <td>Harga</td>
+                                    <td>:</td>
+                                    <td><div id="hargadtlx"> </div></td>
+                                </tr>
+                                <tr>
+                                    <td>Berat</td>
+                                    <td>:</td>
+                                    <td><div id="beratdtlx"> </div></td>
+                                </tr>
+                                <tr>
+                                    <td>Stock</td>
+                                    <td>:</td>
+                                    <td><div id="stockdtlx"> </div></td>
+                                </tr>
+                                <tr>
+                                    <td>Keterangan</td>
+                                    <td>:</td>
+                                    <td><div id="keterangandtlx"> </div></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="3" align="center">  <img src="" class="img responsive" style="width:50%; height: 50%;" id="foto_dtlx"> </td>
+                                </tr>
+                                </table>
+                                        </div> 
+                                        <div class="col-lg-6">
+                                        <form action="<?php echo base_url('front/carting'); ?>" method="POST">
+                                        <input type="hidden" name="id_barang" id="id_barang">
+                                        <div class="form-group">
+                                        <div class="form-line">
+                                            <label> Qty </label>
+                                            <input type="number" name="qty" id="qty" class="form-control" placeholder="0" />
+                                        </div>
+                                        </div>
+                                        <div align="center">
+                                            <button type="submit" class="btn btn-lg btn-primary">  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Masukkan Keranjang </button>
+                                        </div>
+                                       </form>
+                                        </div> 
+                                    </div>                           
+                               </div>
+                                
+                                 
+                       </div>
+                     
+                    </div>
+                </div>
+    </div>
+
+
     <script src="<?php echo base_url(); ?>assets_front/js/jquery-3.2.1.min.js"></script>
     <script src="<?php echo base_url(); ?>assets_front/styles/bootstrap4/popper.js"></script>
     <script src="<?php echo base_url(); ?>assets_front/styles/bootstrap4/bootstrap.min.js"></script>
@@ -306,15 +383,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url(); ?>assets_front/plugins/easing/easing.js"></script>
     <script src="<?php echo base_url(); ?>assets_front/js/custom.js"></script>
     <script type="text/javascript">
-      function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    function Carting(id){
+        $("#id_barang").val(id);
+ 
+        var ses = '<?php echo $this->session->userdata('email'); ?>';
+        if(!ses){
+            alert('anda tidak dapat membeli sebelum anda login!');
+        }else{
+          
+            $("#CartModal").modal({backdrop: 'static', keyboard: false,show:true});
+            $.ajax({
+                url:"<?php echo base_url(); ?>front/get_detail/"+id,
+                type:"GET",
+                dataType:"JSON", 
+                success:function(result){ 
+                    $("#id").val(result.id);
+                    $("#nama_barangdtlx").html(result.nama_barang);
+                    $("#nama_kategoridtlx").html(result.nama_kategori);            
+                    $("#hargadtlx").html("IDR "+numberWithCommas(result.harga));
+                    $("#beratdtlx").html(result.berat+" Gram");
+                    $("#stockdtlx").html(result.stock);
+                    $("#keterangandtlx").html(result.keterangan); 
+                    //$("#fotodtl").html(result.foto); 
+                    $("#foto_dtlx").attr("src","upload/"+result.foto);
+                    
+                }
+            });
         }
+    }
+    function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     function ShowDetail(id){
     
         $("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
  
             $.ajax({
-                url:"<?php echo base_url(); ?>barang/get_data_edit/"+id,
+                url:"<?php echo base_url(); ?>front/get_detail/"+id,
                 type:"GET",
                 dataType:"JSON", 
                 success:function(result){ 

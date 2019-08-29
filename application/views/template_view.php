@@ -27,7 +27,7 @@
 
     <!-- Custom Css -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
- 
+    <link href="<?php echo base_url(); ?>assets/css/sweetalert.css" rel="stylesheet">
    <!--  <link href="<?php echo base_url(); ?>assets/css/orgchart.css" rel="stylesheet"> -->
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
 
@@ -81,7 +81,7 @@
     <script src="<?php echo base_url(); ?>assets/js/admin.js"></script>
    
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script> 
- 
+    <script src="<?php echo base_url(); ?>assets/js/sweetalert.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/autosize/autosize.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/pages/ui/notifications.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/momentjs/moment.js"></script>
@@ -204,17 +204,23 @@
                         </a>
                         <ul class="ml-menu">
                  
-                    <li>
-                        <a href="<?php echo base_url('gardu'); ?>">
-                           <i class="material-icons">dns</i>
-                            <span>Invoice</span>
-                        </a>
-                    </li> 
-                    
-                    
-                
-                    
+                            <li>
+                                <a href="<?php echo base_url('invoice'); ?>">
+                                <i class="material-icons">dns</i>
+                                    <span>Invoice</span>
+                                </a>
+                            </li> 
+ 
                         </ul>
+                    </li>
+                    
+                    <li class="header">Report</li> 
+                      <li>
+                      <a href="<?php echo base_url('report_out'); ?>">
+                            <i class="material-icons">dns</i>
+                            <span>Report</span>
+                        </a>
+                        
                     </li>
                     
                      

@@ -1,4 +1,18 @@
 <?php
+if(!function_exists('status_paid')){
+	function status_paid($params){
+        $res = '';
+		if($params == 1){
+			$res = 'Not Paid';
+		}else if($params == 2){
+			$res = 'Paid';
+        }else {
+            $res = 'Unknown';
+        }
+
+		return $res;
+    }
+}
 if(!function_exists('level_help')){
 	function level_help($params){
         $res = '';
@@ -166,7 +180,7 @@ if (!function_exists('tanggalan')) {
                 break;
 
             default:
-                $bulan = "";
+                $bulan = "-";
                 break;
         }
 

@@ -13,6 +13,9 @@ class Contact extends Parent_Controller {
  	}
 	public function index(){
 		$data['judul'] = $this->data['judul']; 
+		$count_cart  = $this->db->query("select a.* from t_invoice a
+		inner join t_invoice_detail b on b.no_invoice = a.no_invoice where a.id_customer = '".$this->session->userdata('userid')."' and STATUS  = 1")->num_rows();
+		$data['count_cart'] = $count_cart;
 		$this->load->view('contact/contact_view',$data);
 	}
 	public function autentikasi(){

@@ -28,9 +28,9 @@ class Register extends Parent_Controller {
 
 		//store to db
 		$sql = $this->db->query("insert into m_customer 
-				(email,password,full_name,telp,alamat) 
+				(email,password,full_name,telp,alamat,status) 
 				VALUES 
-				('".$this->input->post('email')."','".base64_encode($this->input->post('password'))."','".$this->input->post('full_name')."','".$this->input->post('telp')."','".$this->input->post('alamat')."')");
+				('".$this->input->post('email')."','".base64_encode($this->input->post('password'))."','".$this->input->post('full_name')."','".$this->input->post('telp')."','".$this->input->post('alamat')."','1')");
 		
 		if($sql){
 			echo "<script language=javascript>

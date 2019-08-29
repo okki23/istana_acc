@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Customer extends Parent_Controller {
  
   var $nama_tabel = 'm_customer';
-  var $daftar_field = array('id','username','password','email','full_name','telp','alamat','status');
+  var $daftar_field = array('id','password','email','full_name','telp','alamat','status');
   var $primary_key = 'id';
   
  	public function __construct(){

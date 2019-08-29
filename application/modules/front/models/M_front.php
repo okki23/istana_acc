@@ -18,7 +18,13 @@ class M_front extends Parent_Model {
 	public function autentikasi($username,$password){
         $sql = $this->db->get_where($this->nama_tabel,array('username'=>$username,'password'=>$password));
 		return $sql;
-	}
+        }
+        
+        public function get_no(){
+                $query = $this->db->query("SELECT SUBSTR(MAX(no_invoice),-7) AS id  FROM t_invoice where status = '1' ");
+                     
+                return $query;
+              }
  
  
 }

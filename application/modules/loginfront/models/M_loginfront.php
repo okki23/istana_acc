@@ -14,7 +14,7 @@ class M_loginfront extends Parent_Model {
 	}
  
 	public function autentikasi($email,$password){
-                $sql = $this->db->get_where($this->nama_tabel,array('email'=>$email,'password'=>$password));
+                $sql = $this->db->get_where($this->nama_tabel,array('email'=>$email,'password'=>$password,'status'=>1));
 		return $sql;
 	}
  
